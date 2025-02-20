@@ -3,6 +3,7 @@ import cors from 'cors';
 import authRoutes from './routes/authRoutes.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import guestRoutes from './routes/guestRoutes.js'
 
 const app = express();
 
@@ -26,6 +27,8 @@ app.use('/api/auth', authRoutes);
 app.get('*', (req, res) => {
     res.sendFile(path.join(frontendPath, 'index.html'));
 });
+
+app.use('/api/guest', guestRoutes)
 
 // Iniciar el servidor
 const PORT = process.env.PORT || 4000;
